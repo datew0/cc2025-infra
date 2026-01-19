@@ -1,5 +1,5 @@
 terraform {
   backend "local" {
-    path = "~/terraform-states/weather-service.tfstate"
+    path = "/var/jenkins/terraform-states/weather-service.tfstate"
   }
 }
