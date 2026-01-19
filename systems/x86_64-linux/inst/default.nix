@@ -34,16 +34,6 @@
 
   zramSwap.enable = true;
 
-#   virtualisation.containers.enable = true;
-#   virtualisation = {
-#     podman = {
-#       enable = true;
-
-#       # Required for containers under podman-compose to be able to talk to each other.
-#       defaultNetwork.settings.dns_enabled = true;
-#     };
-#   };
-
   virtualisation.docker.enable = true;
   users.extraGroups.docker.members = [ "jenkins" ];
 
@@ -74,8 +64,8 @@
   users.users.unt0n = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "docker" ]; # Enable sudo for the user.
-    hashedPassword = "$y$j9T$HmDh49x4HjWmFq08DAADJ0$QiZGdXSecoqdKap0PNa/gpASkqsCPnPrN/rodp4CL/5"; # 123OTT
+    extraGroups = [ "wheel" "docker" ];
+    hashedPassword = "$y$j9T$HmDh49x4HjWmFq08DAADJ0$QiZGdXSecoqdKap0PNa/gpASkqsCPnPrN/rodp4CL/5";
     openssh.authorizedKeys.keys = [ "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIOmAKoDj0YaRo4Xd+hHXs8K5yzZ8ytn7amgG8eIRCn5yAAAAB3NzaDpsYWI=" ];
   };
 
@@ -83,7 +73,7 @@
     isNormalUser = true;
     shell = pkgs.bash;
     extraGroups = [ "docker" ];
-    hashedPassword = "$y$j9T$HmDh49x4HjWmFq08DAADJ0$QiZGdXSecoqdKap0PNa/gpASkqsCPnPrN/rodp4CL/5"; # 123OTT
+    hashedPassword = "$y$j9T$HmDh49x4HjWmFq08DAADJ0$QiZGdXSecoqdKap0PNa/gpASkqsCPnPrN/rodp4CL/5";
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEcwC52M6WYAt4krnquADI7DRfiqWpx03oIJxCQapVwa" ];
   };
 

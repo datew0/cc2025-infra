@@ -22,8 +22,8 @@
     home.packages = with pkgs; [
     ];
 
-    home.file."openstack.sh" = {
-        source = ./openstack.sh;
-        executable = true;
-    };
+    # home.file."openstack.sh" = {
+    #     source = ./openstack.sh;
+    #     executable = true;
+    # };
 }

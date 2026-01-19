@@ -24,28 +24,6 @@
     #     git
     # ];
 
-    # Autostart w/o user login: sudo loginctl enable-linger $(whoami)
-    # systemd.user.services.jenkins-agent = {
-    #     Unit = {
-    #         Description = "Jenkins Agent Service";
-    #         # Requires = [ "docker.service" ];
-    #         # After = [ "podman.service" ];
-    #     };
-    #     Install = {
-    #         WantedBy = [ "default.target" ];
-    #     };
-    #     Service = {
-    #         Type = "exec";
-    #         # WorkingDirectory = "/home/unt0n/remnanode";  # Путь к вашей папке с compose-файлом
-    #         ExecStart = "${pkgs.jdk21_headless}/bin/java -jar agent.jar -url http://192.168.199.88:8080/ -secret jenkins.key -name 'GavrilovA-Node' -webSocket -workDir /var/jenkins";
-    #         # ExecStop = "${pkgs.jdk21_headless}/bin/podman compose down";  # Остановка при завершении службы
-    #         # Environment = "PATH=${pkgs.jdk21_headless}/bin:/run/wrappers/bin"; # wrappers нужен, чтобы у newuidmap был SUID бит
-    #         Restart = "on-failure";                     # Перезапуск при падении
-    #         # TimeoutStopSec = 30;
-    #     };
-    # };
-
-
     home.file."agent.jar" = {
         source = ./agent.jar;
         executable = true;
