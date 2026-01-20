@@ -54,6 +54,6 @@ ${yandex_compute_instance.vm.network_interface[0].nat_ip_address}
 
 [vm:vars]
 ansible_user=ubuntu
-ansible_ssh_private_key_file=~/.ssh/id_rsa
+ansible_ssh_private_key_file=~/cloud-vm
 EOF
 }
