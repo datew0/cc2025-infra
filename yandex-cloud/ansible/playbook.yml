@@ -7,6 +7,8 @@
     docker_users:
       - ubuntu
     docker_install_compose: true
+    app_dir: /opt/weather-app
+    repo_url: https://github.com/datew0/weather-prediction.git
 
   roles:
     - geerlingguy.docker
@@ -15,6 +17,14 @@
     - name: Reset SSH connection to apply new group membership
       meta: reset_connection
 
-    - name: Verify docker works without sudo
-      command: docker ps
+    - name: Clone application repository
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ app_dir }}"
+      become: false
+
+    - name: Run docker compose up
+      command: docker compose up -d
+      args:
+        chdir: "{{ app_dir }}"
       become: false
