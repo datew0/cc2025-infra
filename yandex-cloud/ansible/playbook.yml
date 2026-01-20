@@ -26,8 +26,6 @@
     - name: Create .env file for Docker Compose
       copy:
         dest: "{{ app_dir }}/.env"
-        owner: "{{ app_user }}"
-        group: "{{ app_user }}"
         mode: "0640"
         content: |
           PROJECT_NAME=Weather Service Project
