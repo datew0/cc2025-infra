@@ -1,5 +1,20 @@
-- hosts: all
-  gather_facts: false
+---
+- name: Install Docker using role
+  hosts: all
+  become: true
+
+  vars:
+    docker_users:
+      - ubuntu
+    docker_install_compose: true
+
+  roles:
+    - geerlingguy.docker
+
   tasks:
-    - name: Ansible ping
-      ansible.builtin.ping:
+    - name: Reset SSH connection to apply new group membership
+      meta: reset_connection
+
+    - name: Verify docker works without sudo
+      command: docker ps
+      become: false
