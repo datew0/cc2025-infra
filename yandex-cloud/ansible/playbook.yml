@@ -7,7 +7,7 @@
     docker_users:
       - ubuntu
     docker_install_compose: true
-    app_dir: /opt/weather-app
+    app_dir: /home/ubuntu/weather-app
     repo_url: https://github.com/datew0/weather-prediction.git
 
   roles:
