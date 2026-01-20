@@ -1,14 +1,5 @@
 - hosts: all
   gather_facts: false
   tasks:
-    - name: Wait for SSH to become available
-      ansible.builtin.wait_for:
-        host: "{{ ansible_host | default(inventory_hostname) }}"
-        port: 22
-        delay: 10
-        timeout: 300
-      delegate_to: localhost
-      become: false
-
     - name: Ansible ping
       ansible.builtin.ping:
