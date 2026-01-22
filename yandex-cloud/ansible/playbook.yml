@@ -10,6 +10,8 @@
     docker_install_compose: true
     app_dir: /home/ubuntu/weather-app
     repo_url: https://github.com/datew0/weather-prediction.git
+    docker_registry_user: "{{ lookup('env', 'DOCKER_REGISTRY_USER') }}"
+    docker_registry_token: "{{ lookup('env', 'DOCKER_REGISTRY_TOKEN') }}"
 
   pre_tasks:
     - name: Wait for SSH to become available
@@ -57,6 +59,12 @@
           RABBITMQ_PASS=guest
           RABBITMQ_FC_REQ_QUEUE=forecast_requests
       become: false
+
+    - name: Docker Registry login
+      docker_login:
+        registry_url: ghcr.io
+        username: "{{ docker_registry_user }}"
+        password: "{{ docker_registry_token }}"
 
     - name: Run docker compose up
       command: docker compose up -d
