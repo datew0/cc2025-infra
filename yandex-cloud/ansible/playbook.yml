@@ -2,6 +2,7 @@
 - name: Install Docker using role
   hosts: all
   become: true
+  gather_facts: false
 
   vars:
     docker_users:
@@ -9,6 +10,14 @@
     docker_install_compose: true
     app_dir: /home/ubuntu/weather-app
     repo_url: https://github.com/datew0/weather-prediction.git
+
+  pre_tasks:
+    - name: Wait for SSH to become available
+      wait_for_connection:
+        timeout: 300
+
+    - name: Gather facts after SSH is ready
+      setup:
 
   roles:
     - geerlingguy.docker

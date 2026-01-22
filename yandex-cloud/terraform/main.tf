@@ -57,21 +57,3 @@ ansible_user=ubuntu
 ansible_ssh_private_key_file=~/cloud-vm
 EOF
 }
-
-resource "null_resource" "wait_for_ssh" {
-  depends_on = [yandex_compute_instance.vm]
-
-  connection {
-    type        = "ssh"
-    host        = yandex_compute_instance.vm.network_interface[0].nat_ip_address
-    user        = "ubuntu"
-    private_key = file("~/cloud-vm")
-    timeout     = "3m"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "echo SSH is up"
-    ]
-  }
-}
