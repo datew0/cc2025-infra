@@ -65,6 +65,7 @@
         registry_url: ghcr.io
         username: "{{ docker_registry_user }}"
         password: "{{ docker_registry_token }}"
+      become: false
 
     - name: Run docker compose up
       command: docker compose up -d
