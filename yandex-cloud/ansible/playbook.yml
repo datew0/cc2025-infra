@@ -1,5 +1,5 @@
 ---
-- name: Install Docker using role
+- name: Deploy Weather Prediction application
   hosts: all
   become: true
   gather_facts: false
