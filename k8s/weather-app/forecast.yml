@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forecast
+  namespace: weather
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forecast
+  template:
+    metadata:
+      labels:
+        app: forecast
+    spec:
+      containers:
+        - name: forecast
+          image: ghcr.io/datew0/weather-prediction-forecast:latest
+          envFrom:
+            - configMapRef:
+                name: weather-env
