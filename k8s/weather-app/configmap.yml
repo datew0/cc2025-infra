@@ -7,15 +7,15 @@ data:
   PROJECT_NAME: "Weather Service Project"
 
   WEATHER_HOST: weather
-  WEATHER_PORT: 80
+  WEATHER_PORT: "80"
 
   ARCHIVE_WEATHER_URL: "https://archive-api.open-meteo.com/v1/archive"
 
   REDIS_HOST: redis
-  REDIS_PORT: 6379
+  REDIS_PORT: "6379"
 
   RABBITMQ_HOST: rmq
-  RABBITMQ_PORT: 5672
+  RABBITMQ_PORT: "5672"
   RABBITMQ_USER: guest
   RABBITMQ_PASS: guest
   RABBITMQ_FC_REQ_QUEUE: forecast_requests
